@@ -8,7 +8,8 @@ const cardValues = [
 ]
 
 function App() {
-  const [cards, setCards] = useState([])
+  const [cards, setCards] = useState([]);
+  const [flippedCards, setFlippedCards] = useState([]);
 
   const intitializeGame = () => {
     //TODO: SHUFFLE THE CARDS
@@ -37,6 +38,28 @@ function App() {
         return c; // Maybe should keep the else
     });
     setCards(newCards);
+    setFlippedCards(prevFlipped => [...prevFlipped, {...card, isFlipped: true}]); // prevFlipped arrow function, spreading prevFlipped array argument (flippedCards), spreading card to change isFlipped to true
+
+    useEffect(() =>{
+      if (flippedCards.length === 2){
+        const [card1, card2] = flippedCards;
+        if (card1.value === card2.value){
+          handleMatched(card1, card2); // TODO: create the function
+        }
+        else{
+          handleMisMatch(card1, card2); //TODO: create the function
+        }
+      }
+    }, [flippedCards])
+  };
+
+  const handleMatched = (card1, card2) => {
+  };
+
+  const handleMisMatch = (card1, card2) => {
+    setTimeout(() => {
+      setCards();
+    }, 2000)
   };
 
   return (<div className="app">
