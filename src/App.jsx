@@ -3,22 +3,8 @@ import { Card } from "./components/Card";
 import { useEffect, useState } from "react";
 
 const cardValues = [
-  "😃",
-  "😍",
-  "😉",
-  "🙃",
-  "🙂",
-  "😎",
-  "😵‍💫",
-  "😭",
-  "😃",
-  "😍",
-  "😉",
-  "🙃",
-  "🙂",
-  "😎",
-  "😵‍💫",
-  "😭"
+  "😃", "😍", "😉", "🙃", "🙂", "😎", "😵‍💫", "😭",
+  "😃", "😍", "😉", "🙃", "🙂", "😎", "😵‍💫", "😭"
 ]
 
 function App() {
@@ -26,12 +12,12 @@ function App() {
 
   const intitializeGame = () => {
     //TODO: SHUFFLE THE CARDS
-    const finalCards = setCards(cardValues.map((value, index) => ({
+    const finalCards = cardValues.map((value, index) => ({
         id: index,
         value,
         isFlipped: false,
         isMatched: false
-      })));
+      }));
 
       setCards(finalCards);
   };
