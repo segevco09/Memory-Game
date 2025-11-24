@@ -58,7 +58,7 @@ function App() {
 
   const handleMisMatch = (card1, card2) => {
     setTimeout(() => {
-      setCards();
+      setCards([...prevFlipped, {card1, isFlipped: false}, {card2, isFlipped: false}])
     }, 2000)
   };
 
