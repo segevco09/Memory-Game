@@ -26,12 +26,25 @@ function App() {
     intitializeGame();
   }, []);
 
+  const handleCardClick = (card) => {
+    if(card.isFlipped || card.isMatched){
+      return;
+    }
+    const newCards = cards.map((c) => { // Copy with the updated state
+      if (c.id === card.id) {
+        return {...c, isFlipped: true};
+      }
+        return c; // Maybe should keep the else
+    });
+    setCards(newCards);
+  };
+
   return (<div className="app">
     <GameHeader score = {99} moves = {99}/>
 
     <div className="cards-grid">
       {cards.map((card) => (
-        <Card card = {card} />
+        <Card card = {card} onClick={handleCardClick} />
       ))}
     </div>
   </div>
